@@ -36,8 +36,11 @@ class HcServer(LineReceiver):
         (idx, msg) = util.dec_msg(line)
 
         cmd = self.factory.sr.cmd(msg)
+
         if cmd:
             cmd.d.addCallback(self.ack, idx)
+            if True:
+                self.sendLine('ok')
 
 
 class HcServerFactory(Factory):
